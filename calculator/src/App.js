@@ -6,11 +6,11 @@ import ButtonBox from "./components/ButtonBox";
 import Button from "./components/Button";
 
 const btnValues = [
-  ["C", "+-", "%", "/"],
-  [7, 8, 9, "X"],
-  [4, 5, 6, "-"],
-  [1, 2, 3, "+"],
-  [0, ".", "="],
+  [7, 8, 9],["X","C"],
+  [4, 5, 6],["-","+-"],
+  [1, 2, 3], ["+","%"],
+  [null,0,null],[".", "/"], 
+  ["=", "^","sqrt"]
 ];
 
 const toLocaleString = (num) =>
@@ -74,6 +74,10 @@ const App = () => {
           ? a - b
           : sign === "X"
           ? a * b
+          : sign === "^"
+          ? a ** b
+          : sign === "sqrt"
+          ? Math.sqrt(a,b)
           : a / b;
 
       setCalc({
@@ -143,7 +147,7 @@ const App = () => {
                   ? percentClickHandler
                   : btn === "="
                   ? equalsClickHandler
-                  : btn === "/" || btn === "X" || btn === "-" || btn === "+"
+                  : btn === "/" || btn === "X" || btn === "-" || btn === "+"|| btn === "^" || btn === "sqrt"
                   ? signClickHandler
                   : btn === "."
                   ? commaClickHandler
